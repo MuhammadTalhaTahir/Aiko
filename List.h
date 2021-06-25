@@ -10,8 +10,14 @@ public:
 	object* data;
 	node();
 };
+
 class list
 {
+private:
+	node* first;
+public:
+	list();
+	void update();
 };
 
-#endif // ! List_H
+#endif 

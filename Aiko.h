@@ -11,10 +11,9 @@ class Aiko
 
 
 class object {
+private:
+	Aiko* engine;
 public:
 	virtual void update() = 0;
 };
 #endif 
-
-
-
