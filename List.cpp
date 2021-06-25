@@ -2,6 +2,7 @@
 
 node::node() {
 	next = NULL;
+	data = NULL;
 }
 
 list::list() {
