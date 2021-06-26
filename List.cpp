@@ -7,18 +7,24 @@ node::node() {
 
 list::list() {
 	first = NULL;
+	objectCount = 0;
 }
 
 void list::insert(object* d)
 {
-	node* temp = new node;
-	temp->data = d;
-	if (!first) {
-		first = temp;
+	if (first==NULL) {
+		first = new node;
+		first->data = d;
+		objectCount++;
 	}
 	else {
-		temp->next = first;
-		first = temp;
+		node* temp = first;
+		while (temp->next!=NULL) {
+			temp = temp->next;
+		}
+		temp->next = new node;
+		temp->next->data = d;
+		objectCount++;
 	}
 }
 
@@ -27,8 +33,9 @@ void list::remove(object* d)
 	node* temp = first;
 	if (first->data == d)
 	{
-		first = first->next;
+		if(first->next!=NULL)first = first->next;
 		delete temp;
+		objectCount--;
 	}
 	else {
 		while (temp->next->data != d)
@@ -36,9 +43,13 @@ void list::remove(object* d)
 			temp = temp->next;
 		}
 		node* t = temp->next;
-		temp->next = temp->next->next;
+		if(temp->next->next!=NULL)temp->next = temp->next->next;
 		delete t;
+		objectCount--;
 	}
+}
+int list::getObjectCount()const {
+	return objectCount;
 }
 
 void list::update() {

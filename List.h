@@ -15,11 +15,12 @@ class list
 {
 private:
 	node* first;
+	int objectCount;
 public:
 	list();
 	void insert(object*);
 	void remove(object*);
-
+	int getObjectCount()const;
 
 	void update();
 };
