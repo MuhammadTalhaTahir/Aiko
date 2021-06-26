@@ -3,6 +3,7 @@
 Aiko::Aiko() {
 	window = new RenderWindow(VideoMode(1024, 576), "Aiko Test Window");
 	events = new Event;
+	input = 'n';
 }
 
 void Aiko::catchEvents() {
@@ -10,9 +11,11 @@ void Aiko::catchEvents() {
 		if (events->type == Event::Closed) {
 			window->close();
 		}
+		else if (events->type == Event::MouseButtonPressed) {
+			input = 'y';
+		}
 	}
 }
-
 void Aiko::Run() {
 	while (window->isOpen()) {
 		catchEvents();
@@ -21,7 +24,6 @@ void Aiko::Run() {
 		window->display();
 	}
 }
-
 void Aiko::insertObject(object* temp) {
 	aikoObjects.insert(temp);
 	temp->start();
@@ -32,4 +34,12 @@ void Aiko::deleteObject(object* temp) {
 
 RenderWindow* Aiko::win() {
 	return window;
+}
+
+bool Aiko::isMouseButtonPressed() {
+	if (input == 'y') {
+		input = 'n';
+		return true;
+	}
+	return false;
 }

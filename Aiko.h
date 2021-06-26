@@ -8,12 +8,14 @@ private:
 	list aikoObjects;
 	RenderWindow* window;
 	Event* events;
+	char input;
 public:
 	Aiko();
 	void Run();
 	void insertObject(object*);
 	void deleteObject(object*);
 	RenderWindow* win();
+	bool isMouseButtonPressed();
 private:
 	void catchEvents();
 };
