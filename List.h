@@ -17,6 +17,10 @@ private:
 	node* first;
 public:
 	list();
+	void insert(object*);
+	void remove(object*);
+
+
 	void update();
 };
 
