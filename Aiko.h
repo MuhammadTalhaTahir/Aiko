@@ -6,8 +6,15 @@
 class Aiko{
 private:
 	list aikoObjects;
+	RenderWindow* window;
+	Event* events;
+public:
+	Aiko();
+	void Run();
+	void insertObject(object*);
+	void deleteObject(object*);
+	RenderWindow* win();
+private:
+	void catchEvents();
 };
-
-
-
 #endif 

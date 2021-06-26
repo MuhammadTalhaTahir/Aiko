@@ -9,6 +9,7 @@ using namespace std;
 class object {
 public:
 	virtual void update() = 0;
+	virtual void start() = 0;
 };
 
 class node {
