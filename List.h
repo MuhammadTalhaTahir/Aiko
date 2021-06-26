@@ -1,8 +1,15 @@
 #pragma once
 #ifndef  List_H
 #define List_H
-#include "Aiko.h"
+#include <iostream>
+#include <SFML/Graphics.hpp>
+using namespace sf;
+using namespace std;
 
+class object {
+public:
+	virtual void update() = 0;
+};
 
 class node {
 public:
@@ -11,8 +18,7 @@ public:
 	node();
 };
 
-class list
-{
+class list{
 private:
 	node* first;
 	int objectCount;
@@ -21,8 +27,7 @@ public:
 	void insert(object*);
 	void remove(object*);
 	int getObjectCount()const;
-
-	void update();
+	void updateObjects();
 };
 
 #endif 

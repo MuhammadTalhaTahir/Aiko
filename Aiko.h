@@ -1,21 +1,13 @@
 #pragma once
 #ifndef Aiko_H
 #define Aiko_H
-#include <iostream>
-//#include <SFML/Graphics.hpp>
-//using namespace sf;
-using namespace std;
 #include "List.h"
-class object {
+
+class Aiko{
 private:
-	Aiko* engine;
-public:
-	virtual void update() = 0;
+	list aikoObjects;
 };
 
-class Aiko
-{
-	list a;
-};
+
 
 #endif 

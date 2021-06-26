@@ -5,13 +5,12 @@ node::node() {
 	data = NULL;
 }
 
-list::list() {
+list::list(){
 	first = NULL;
 	objectCount = 0;
 }
 
-void list::insert(object* d)
-{
+void list::insert(object* d){
 	if (first==NULL) {
 		first = new node;
 		first->data = d;
@@ -28,8 +27,7 @@ void list::insert(object* d)
 	}
 }
 
-void list::remove(object* d)
-{
+void list::remove(object* d){
 	node* temp = first;
 	if (first->data == d)
 	{
@@ -48,14 +46,15 @@ void list::remove(object* d)
 		objectCount--;
 	}
 }
+
 int list::getObjectCount()const {
 	return objectCount;
 }
 
-void list::update() {
+void list::updateObjects() {
 	node* temp = first;
 	while (temp != NULL) {
 		temp->data->update();
-		temp = temp->next;
+		temp=temp->next;
 	}
 }
