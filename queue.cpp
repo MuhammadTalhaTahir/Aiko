@@ -99,3 +99,7 @@ T queue<T>::getIndex(int i) {
         return temp->getData();
     }
 }
+template<class T>
+T queue<T>::getTop() {
+    return first->getData();
+}

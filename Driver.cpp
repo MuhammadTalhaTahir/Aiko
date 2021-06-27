@@ -31,11 +31,11 @@ public:
         bullet = NULL;
     };
     void update() {
-        if (engine->mouseButtonPressed()=="Left") {
+        if (engine->mouseButtonPressed("Left")) {
             bullet = new dummyObject2(engine);
             engine->insertObject(bullet);
         }
-        if (engine->keyBoardButtonPressed() == "Right") {
+        if (engine->mouseButtonPressed("Right")) {
             bullet = new dummyObject2(engine);
             engine->insertObject(bullet);
         }

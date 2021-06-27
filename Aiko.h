@@ -19,8 +19,8 @@ public:
 	void insertObject(object*);
 	void deleteObject(object*);
 	RenderWindow* win();
-	string mouseButtonPressed();
-	string keyBoardButtonPressed();
+	bool mouseButtonPressed(string);
+	bool keyBoardButtonPressed(string);
 private:
 	void catchEvents();
 };

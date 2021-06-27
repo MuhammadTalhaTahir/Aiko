@@ -15,6 +15,7 @@ public:
     T dequeue();
     T dequeueLast();
     int getSize();
+    T getTop();
     void displayQueue()const;
     bool isEmpty();
     T getIndex(int i);
