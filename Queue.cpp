@@ -1,59 +1,102 @@
-#include "Queue.h"
+#include <iostream>
+#include"queue.h"
+using namespace std;
 
-template <typename T>
-Queue<T>::Queue() 
-{
-	head = NULL;
+template<class T>
+queue<T>::queue(){
+        first=last=NULL;
 }
-template <typename T>
-void Queue<T>::enQueue(T data)
-{
-	Node<T>* node = new Node<T>(data);
-	if (isEmpty())
-	{
-		head = node;
-	}
-	else {
-		Node<T>* temp = head;
-		while (temp->next != NULL) {
-			temp = temp->next;
-		}
-		temp->next = node;
-	}
+template<class T>
+void queue<T>::enqueue(T data){
+    if(first==NULL){
+        first=new node<T>;
+        first->setData(data);
+        last=first;
+    }
+    else{
+        last->next=new node<T>;
+        last->next->pre = last;
+        last=last->next;
+        last->setData(data);
+    }
 }
+template<class T>
+T queue<T>::dequeue(){
+    if (first != NULL) {
+        T temp = first->getData();
+        node<T>* tem = first;
+        first = first->next;
+        if (first != NULL && first->pre != NULL)first->pre = NULL;
+        if (tem != NULL) delete tem;
+        return temp;
+    }
+    else return -99999;
+}
+template<class T>
+bool queue<T>::isEmpty(){
+    if(first==NULL)return true;
+    else return false;
+}
+template<class T>
+queue<T>::~queue() {
+    if (first != NULL) {
+        node<T>* temp;
+        while (first != NULL) {
+            temp = first;
+            first = first->next;
+            if (temp != NULL)delete temp;
+        }
+        if (first != NULL)first = NULL;
+        if (last != NULL)last = NULL;
 
-template <typename T>
-T Queue<T>::deQueue()
-{
-	if (!isEmpty())
-	{
-		T data = head->getdata();
-		Node<T>* temp = head;
-		head = head->next;
-		delete temp;
-		return data;
-	}
+    }
 }
-template <typename T>
-bool Queue<T>::isEmpty() 
-{
-	if (head == NULL) {
-		return true;
-	}
-	else {
-		return false;
-	}
+template<class T>
+T queue<T>::dequeueLast() {
+    if (first == NULL) return -99999;
+    if (last == first) {
+        T ret = first->getData();
+        if (first != NULL)delete first;
+        if (first != NULL) first = NULL;
+        if (last != NULL) last = NULL;
+        return ret;
+    }
+    else {
+        T ret = last->getData();
+        node<T>* temp = last;
+        last = last->pre;
+        if(last->next!=NULL)last->next = NULL;
+        if (temp != NULL)delete temp;
+        return ret;
+    }
 }
-template <typename T>
-Queue<T>::~Queue() 
-{
-	Node<T>* temp = head;
-	if (temp != NULL)
-	{
-		do {
-			head = temp->next;
-			delete temp;
-			temp = head;
-		} while (temp != NULL);
-	}
+template<class T>
+void queue<T>::displayQueue()const {
+    node<T>* temp = first;
+    while (temp != NULL) {
+        cout << "#" << endl;
+        temp=temp->next;
+    }
+}
+template<class T>
+int queue<T>::getSize() {
+    node<T>* temp = first;
+    int count = 0;
+    while (temp != NULL) {
+        temp = temp->next;
+        count++;
+    }
+    return count;
+}
+template<class T>
+T queue<T>::getIndex(int i) {
+    if (i < this->getSize()) {
+        node<T>* temp = first;
+        int count = 0;
+        while (count!=i && temp != NULL) {
+            temp = temp->next;
+            count++;
+        }
+        return temp->getData();
+    }
 }

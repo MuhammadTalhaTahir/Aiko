@@ -1,13 +1,20 @@
 #pragma once
-#include<iostream>
+#ifndef node_H
+#define node_H
 using namespace std;
+
 template<class T>
-class Node
-{
-	T data;
+class node {
+private:
+    T data;
 public:
-	Node<T>* next;
-	Node();
-	Node(T z);
-	T getdata();
+    bool isDel;
+    node<T>* next;
+    node<T>* pre;
+    node();
+    ~node();
+    void setData(T data);
+    T getData();
 };
+
+#endif

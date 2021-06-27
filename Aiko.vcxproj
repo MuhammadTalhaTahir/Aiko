@@ -154,10 +154,14 @@
     <ClCompile Include="Aiko.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="List.cpp" />
+    <ClCompile Include="node.cpp" />
+    <ClCompile Include="queue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aiko.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="node.h" />
+    <ClInclude Include="queue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,15 +1,20 @@
 #pragma once
-#include"Node.h"
-#include"Node.cpp"
-template<typename T>
-class Queue
-{
-	Node<T>* head;
+#ifndef queue_H
+#define queue_H
+#include "node.h"
+using namespace std;
+template<class T>
+class queue{
 public:
-	Queue();
-	void enQueue(T data);
-	T deQueue();
-	bool isEmpty();
-	~Queue();
+    node<T>* first,*last;
+    queue();
+    ~queue();
+    void enqueue(T data);
+    T dequeue();
+    T dequeueLast();
+    int getSize();
+    void displayQueue()const;
+    bool isEmpty();
+    T getIndex(int i);
 };
-
+#endif

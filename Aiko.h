@@ -8,7 +8,8 @@ private:
 	list aikoObjects;
 	RenderWindow* window;
 	Event* events;
-	char input;
+public:
+	char* input;
 public:
 	Aiko();
 	void Run();

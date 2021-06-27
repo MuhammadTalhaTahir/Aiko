@@ -12,16 +12,16 @@ public:
 	virtual void start() = 0;
 };
 
-class node {
+class Node {
 public:
-	node* next;
+	Node* next;
 	object* data;
-	node();
+	Node();
 };
 
 class list{
 private:
-	node* first;
+	Node* first;
 	int objectCount;
 public:
 	list();

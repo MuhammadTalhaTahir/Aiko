@@ -1,6 +1,6 @@
 #include "List.h"
 
-node::node() {
+Node::Node() {
 	next = NULL;
 	data = NULL;
 }
@@ -12,23 +12,23 @@ list::list(){
 
 void list::insert(object* d){
 	if (first==NULL) {
-		first = new node;
+		first = new Node;
 		first->data = d;
 		objectCount++;
 	}
 	else {
-		node* temp = first;
+		Node* temp = first;
 		while (temp->next!=NULL) {
 			temp = temp->next;
 		}
-		temp->next = new node;
+		temp->next = new Node;
 		temp->next->data = d;
 		objectCount++;
 	}
 }
 
 void list::remove(object* d){
-	node* temp = first;
+	Node* temp = first;
 	if (first->data == d)
 	{
 		if(first->next!=NULL)first = first->next;
@@ -40,7 +40,7 @@ void list::remove(object* d){
 		{
 			temp = temp->next;
 		}
-		node* t = temp->next;
+		Node* t = temp->next;
 		if(temp->next->next!=NULL)temp->next = temp->next->next;
 		delete t;
 		objectCount--;
@@ -52,7 +52,7 @@ int list::getObjectCount()const {
 }
 
 void list::updateObjects() {
-	node* temp = first;
+	Node* temp = first;
 	while (temp != NULL) {
 		temp->data->update();
 		temp=temp->next;

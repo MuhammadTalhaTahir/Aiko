@@ -1,4 +1,6 @@
 #include "Aiko.h"
+#include "queue.h"
+#include "queue.cpp"
 class dummyObject2 :public object {
     Aiko* engine;
     RectangleShape* body;
@@ -29,6 +31,9 @@ public:
         bullet = NULL;
     };
     void update() {
+        if (engine->input[0] == 'W') {
+            //move forward
+        }
         if (engine->isMouseButtonPressed()) {
             bullet = new dummyObject2(engine);
             engine->insertObject(bullet);
@@ -45,7 +50,6 @@ public:
 int main(){
     Aiko a;
     dummyObject b(&a);
-
     a.insertObject(&b);
     a.Run();
     return 0;
