@@ -11,14 +11,14 @@ private:
 	list aikoObjects;
 	RenderWindow* window;
 	Event* events;
-	char input;
+	queue<string> mouseInput;
 public:
 	Aiko();
 	void Run();
 	void insertObject(object*);
 	void deleteObject(object*);
 	RenderWindow* win();
-	bool isMouseButtonPressed();
+	string MouseButtonPressed();
 private:
 	void catchEvents();
 };

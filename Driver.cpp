@@ -31,7 +31,7 @@ public:
         bullet = NULL;
     };
     void update() {
-        if (engine->isMouseButtonPressed()) {
+        if (engine->MouseButtonPressed()=="right") {
             bullet = new dummyObject2(engine);
             engine->insertObject(bullet);
         }

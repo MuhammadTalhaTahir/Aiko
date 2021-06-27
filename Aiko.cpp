@@ -3,7 +3,6 @@
 Aiko::Aiko() {
 	window = new RenderWindow(VideoMode(1024, 576), "Aiko Test Window");
 	events = new Event;
-	input = 'n';
 }
 
 void Aiko::catchEvents() {
@@ -11,8 +10,13 @@ void Aiko::catchEvents() {
 		if (events->type == Event::Closed) {
 			window->close();
 		}
-		if (events->type == Event::KeyPressed) {
-			
+		if (events->type == Event::MouseButtonPressed) {
+			if (Mouse::isButtonPressed(Mouse::Left)) {
+				mouseInput.enqueue("left");
+			}
+			else if (Mouse::isButtonPressed(Mouse::Right)) {
+				mouseInput.enqueue("right");
+			}
 		}
 	}
 }
@@ -36,10 +40,9 @@ RenderWindow* Aiko::win() {
 	return window;
 }
 
-bool Aiko::isMouseButtonPressed() {
-	if (input == 'y') {
-		input = 'n';
-		return true;
+string Aiko::MouseButtonPressed() {
+	if (!mouseInput.isEmpty()) {
+		return mouseInput.dequeue();
 	}
-	return false;
+	else return "NULL";
 }

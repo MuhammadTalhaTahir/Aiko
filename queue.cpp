@@ -34,7 +34,6 @@ T queue<T>::dequeue() {
         size--;
         return temp;
     }
-    else return -99999;
 }
 template<class T>
 bool queue<T>::isEmpty() {
