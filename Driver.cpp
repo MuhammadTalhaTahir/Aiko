@@ -26,6 +26,7 @@ public:
     dummyObject(Aiko* e) {
         engine = e;
         body = new RectangleShape;
+        bullet = NULL;
     };
     void update() {
         if (engine->isMouseButtonPressed()) {
@@ -40,7 +41,6 @@ public:
         body->setSize(Vector2f(34, 34));
     };
 };
-
 
 int main(){
     Aiko a;
