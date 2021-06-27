@@ -66,23 +66,33 @@ RenderWindow* Aiko::win() {
 	return window;
 }
 
-bool Aiko::mouseButtonPressed(string temp) {
-	if (!mouseInput.isEmpty()) {
+string Aiko::mouseButtonPressed() {
+	if (!mouseInput.isEmpty())
+	{
+		return mouseInput.dequeue();
+	}
+	return "NULL";
+	/*if (!mouseInput.isEmpty()) {
 		if (mouseInput.getTop() == temp) {
 			mouseInput.dequeue();
 			return true;
 		}
 		else return false;
 	}
-	else return false;
+	else return false;*/
 }
-bool Aiko::keyBoardButtonPressed(string temp) {
-	if (!keyBoardInput.isEmpty()) {
-		if (keyBoardInput.getTop() == temp) {
-			keyBoardInput.dequeue();
-			return true;
-		}
-		else return false;
+string Aiko::keyBoardButtonPressed() {
+	if (!keyBoardInput.isEmpty())
+	{
+		return keyBoardInput.dequeue();
 	}
-	else return false;
+	return "NULL";
+	//if (!keyBoardInput.isEmpty()) {
+	//	if (keyBoardInput.getTop() == temp) {
+	//		keyBoardInput.dequeue();
+	//		return true;
+	//	}
+	//	else return false;
+	//}
+	//else return false;
 }

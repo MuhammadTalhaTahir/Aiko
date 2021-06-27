@@ -33,21 +33,23 @@ public:
         body = new RectangleShape;
         bullet = NULL;
     };
-    void update() {
-        if (engine->mouseButtonPressed("Left")) {
+    void update() { 
+		string mouseInput = engine->mouseButtonPressed();
+		string keyBoardInput = engine->keyBoardButtonPressed();
+        if (mouseInput =="Left") {
             bullet = new dummyObject2(engine,body->getPosition().x,body->getPosition().y);
             engine->insertObject(bullet);
         }
-        if (engine->keyBoardButtonPressed("W")) {
+        if (keyBoardInput =="W") {
             body->move(0, -4);
         }
-        if (engine->keyBoardButtonPressed("S")) {
+        if (keyBoardInput =="S") {
             body->move(0, 4);
         }
-        if (engine->keyBoardButtonPressed("A")) {
+        if (keyBoardInput =="A") {
             body->move(-4, 0);
         }
-        if (engine->keyBoardButtonPressed("D")) {
+		if (keyBoardInput == "D") {
             body->move(4, 0);
         }
         engine->win()->draw(*body);
