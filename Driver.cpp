@@ -1,6 +1,5 @@
 #include "Aiko.h"
-#include "queue.cpp"
-#include "Node.cpp"
+
 
 class dummyObject2 :public object {
     Aiko* engine;

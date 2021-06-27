@@ -3,7 +3,8 @@
 #define Aiko_H
 #include "Resources.h"
 #include "queue.h"
-
+#include "queue.cpp"
+#include "Node.cpp"
 
 class Aiko{
 private:
