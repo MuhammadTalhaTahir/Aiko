@@ -4,10 +4,13 @@
 class dummyObject2 :public object {
     Aiko* engine;
     RectangleShape* body;
+    int x, y;
 public:
-    dummyObject2(Aiko* e) {
+    dummyObject2(Aiko* e,int x,int y) {
         engine = e;
         body = new RectangleShape;
+        this->x = x;
+        this->y = y;
     }
     void update() {
         body->move(2, 0);
@@ -15,7 +18,7 @@ public:
     };
     void start() {
         body->setFillColor(Color::Red);
-        body->setPosition(100, 100);
+        body->setPosition(x, y);
         body->setSize(Vector2f(15, 15));
     };
 };
@@ -32,12 +35,20 @@ public:
     };
     void update() {
         if (engine->mouseButtonPressed("Left")) {
-            bullet = new dummyObject2(engine);
+            bullet = new dummyObject2(engine,body->getPosition().x,body->getPosition().y);
             engine->insertObject(bullet);
         }
-        if (engine->mouseButtonPressed("Right")) {
-            bullet = new dummyObject2(engine);
-            engine->insertObject(bullet);
+        if (engine->keyBoardButtonPressed("W")) {
+            body->move(0, -4);
+        }
+        if (engine->keyBoardButtonPressed("S")) {
+            body->move(0, 4);
+        }
+        if (engine->keyBoardButtonPressed("A")) {
+            body->move(-4, 0);
+        }
+        if (engine->keyBoardButtonPressed("D")) {
+            body->move(4, 0);
         }
         engine->win()->draw(*body);
     };
@@ -49,11 +60,6 @@ public:
 };
 
 int main(){
-    queue<int> q;
-    q.enqueue(34);
-    q.enqueue(34);
-    q.enqueue(34);
-    cout << q.getSize() << endl;
     Aiko a;
     dummyObject b(&a);
     a.insertObject(&b);
