@@ -12,13 +12,15 @@ private:
 	RenderWindow* window;
 	Event* events;
 	queue<string> mouseInput;
+	queue<string> keyBoardInput;
 public:
 	Aiko();
 	void Run();
 	void insertObject(object*);
 	void deleteObject(object*);
 	RenderWindow* win();
-	string MouseButtonPressed();
+	string mouseButtonPressed();
+	string keyBoardButtonPressed();
 private:
 	void catchEvents();
 };

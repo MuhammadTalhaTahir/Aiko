@@ -12,10 +12,36 @@ void Aiko::catchEvents() {
 		}
 		if (events->type == Event::MouseButtonPressed) {
 			if (Mouse::isButtonPressed(Mouse::Left)) {
-				mouseInput.enqueue("left");
+				mouseInput.enqueue("Left");
 			}
 			else if (Mouse::isButtonPressed(Mouse::Right)) {
-				mouseInput.enqueue("right");
+				mouseInput.enqueue("Right");
+			}
+		}
+		if (events->type == Event::KeyPressed) {
+			if (Keyboard::isKeyPressed(Keyboard::W))
+			{
+				keyBoardInput.enqueue("W");
+			}
+			if (Keyboard::isKeyPressed(Keyboard::A))
+			{
+				keyBoardInput.enqueue("A");
+			}
+			if (Keyboard::isKeyPressed(Keyboard::S))
+			{
+				keyBoardInput.enqueue("S");
+			}
+			if (Keyboard::isKeyPressed(Keyboard::D))
+			{
+				keyBoardInput.enqueue("D");
+			}
+			if (Keyboard::isKeyPressed(Keyboard::Space))
+			{
+				keyBoardInput.enqueue("Space");
+			}
+			if (Keyboard::isKeyPressed(Keyboard::Enter))
+			{
+				keyBoardInput.enqueue("Enter");
 			}
 		}
 	}
@@ -40,9 +66,15 @@ RenderWindow* Aiko::win() {
 	return window;
 }
 
-string Aiko::MouseButtonPressed() {
+string Aiko::mouseButtonPressed() {
 	if (!mouseInput.isEmpty()) {
 		return mouseInput.dequeue();
+	}
+	else return "NULL";
+}
+string Aiko::keyBoardButtonPressed() {
+	if (!keyBoardInput.isEmpty()) {
+		return keyBoardInput.dequeue();
 	}
 	else return "NULL";
 }
