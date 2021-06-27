@@ -6,7 +6,7 @@ template<class T>
 node<T>::node() {
     if (next != NULL) next = NULL;
     if (pre != NULL) pre = NULL;
-    isDel=false;
+    isDel = false;
 }
 template<class T>
 node<T>::~node() {

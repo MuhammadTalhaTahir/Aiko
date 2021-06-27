@@ -21,10 +21,10 @@
     <ClCompile Include="Aiko.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="List.cpp">
+    <ClCompile Include="Resources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="node.cpp">
+    <ClCompile Include="Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="queue.cpp">
@@ -35,10 +35,10 @@
     <ClInclude Include="Aiko.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="List.h">
+    <ClInclude Include="Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="node.h">
+    <ClInclude Include="Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="queue.h">

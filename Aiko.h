@@ -1,15 +1,16 @@
 #pragma once
 #ifndef Aiko_H
 #define Aiko_H
-#include "List.h"
+#include "Resources.h"
+#include "queue.h"
+
 
 class Aiko{
 private:
 	list aikoObjects;
 	RenderWindow* window;
 	Event* events;
-public:
-	char* input;
+	char input;
 public:
 	Aiko();
 	void Run();

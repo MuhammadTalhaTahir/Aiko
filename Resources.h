@@ -1,6 +1,6 @@
 #pragma once
-#ifndef  List_H
-#define List_H
+#ifndef  Resources_H
+#define	Resources_H
 #include <iostream>
 #include <SFML/Graphics.hpp>
 using namespace sf;
@@ -12,16 +12,16 @@ public:
 	virtual void start() = 0;
 };
 
-class Node {
+class listNode {
 public:
-	Node* next;
+	listNode* next;
 	object* data;
-	Node();
+	listNode();
 };
 
 class list{
 private:
-	Node* first;
+	listNode* first;
 	int objectCount;
 public:
 	list();

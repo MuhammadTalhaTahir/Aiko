@@ -1,6 +1,6 @@
 #pragma once
-#ifndef node_H
-#define node_H
+#ifndef Node_H
+#define Node_H
 using namespace std;
 
 template<class T>

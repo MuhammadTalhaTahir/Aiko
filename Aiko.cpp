@@ -3,7 +3,7 @@
 Aiko::Aiko() {
 	window = new RenderWindow(VideoMode(1024, 576), "Aiko Test Window");
 	events = new Event;
-	input = new char[30];
+	input = 'n';
 }
 
 void Aiko::catchEvents() {
@@ -11,11 +11,8 @@ void Aiko::catchEvents() {
 		if (events->type == Event::Closed) {
 			window->close();
 		}
-		else if (events->type == Event::KeyPressed) {
-			//input = 'y';
-			if (Keyboard::isKeyPressed(Keyboard::W)) {
-				input[1] = 'W';
-			}
+		if (events->type == Event::KeyPressed) {
+			
 		}
 	}
 }

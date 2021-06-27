@@ -4,9 +4,11 @@
 #include "node.h"
 using namespace std;
 template<class T>
-class queue{
+class queue {
+private:
+    int size;
 public:
-    node<T>* first,*last;
+    node<T>* first, * last;
     queue();
     ~queue();
     void enqueue(T data);

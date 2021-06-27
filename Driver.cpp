@@ -1,6 +1,7 @@
 #include "Aiko.h"
-#include "queue.h"
 #include "queue.cpp"
+#include "Node.cpp"
+
 class dummyObject2 :public object {
     Aiko* engine;
     RectangleShape* body;
@@ -31,9 +32,6 @@ public:
         bullet = NULL;
     };
     void update() {
-        if (engine->input[0] == 'W') {
-            //move forward
-        }
         if (engine->isMouseButtonPressed()) {
             bullet = new dummyObject2(engine);
             engine->insertObject(bullet);
@@ -48,6 +46,11 @@ public:
 };
 
 int main(){
+    queue<int> q;
+    q.enqueue(34);
+    q.enqueue(34);
+    q.enqueue(34);
+    cout << q.getSize() << endl;
     Aiko a;
     dummyObject b(&a);
     a.insertObject(&b);
