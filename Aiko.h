@@ -11,16 +11,23 @@ private:
 	list aikoObjects;
 	RenderWindow* window;
 	Event* events;
-	queue<string> mouseInput;
-	queue<string> keyBoardInput;
+	queue<string> mouseInputLeft;
+	queue<string> mouseInputRight;
+	queue<string> keyBoardInputW;
+	queue<string> keyBoardInputA;
+	queue<string> keyBoardInputS;
+	queue<string> keyBoardInputD;
+	queue<string> keyBoardInputSpace;
+	queue<string> keyBoardInputEnter;
 public:
 	Aiko();
 	void Run();
 	void insertObject(object*);
 	void deleteObject(object*);
 	RenderWindow* win();
-	string mouseButtonPressed();
-	string keyBoardButtonPressed();
+	bool mouseButtonPressed(string);
+	bool keyBoardButtonPressed(string);
+	Vector2i getMousePosition();
 private:
 	void catchEvents();
 };

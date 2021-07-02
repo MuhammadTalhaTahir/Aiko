@@ -34,22 +34,20 @@ public:
         bullet = NULL;
     };
     void update() { 
-		string mouseInput = engine->mouseButtonPressed();
-		string keyBoardInput = engine->keyBoardButtonPressed();
-        if (mouseInput =="Left") {
+        if (engine->mouseButtonPressed("Left")) {
             bullet = new dummyObject2(engine,body->getPosition().x,body->getPosition().y);
             engine->insertObject(bullet);
         }
-        if (keyBoardInput =="W") {
+        if (engine->keyBoardButtonPressed("W")) {
             body->move(0, -4);
         }
-        if (keyBoardInput =="S") {
+        if (engine->keyBoardButtonPressed("S")) {
             body->move(0, 4);
         }
-        if (keyBoardInput =="A") {
+        if (engine->keyBoardButtonPressed("A")) {
             body->move(-4, 0);
         }
-		if (keyBoardInput == "D") {
+		if (engine->keyBoardButtonPressed("D")) {
             body->move(4, 0);
         }
         engine->win()->draw(*body);

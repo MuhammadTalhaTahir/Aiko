@@ -12,36 +12,36 @@ void Aiko::catchEvents() {
 		}
 		if (events->type == Event::MouseButtonPressed) {
 			if (Mouse::isButtonPressed(Mouse::Left)) {
-				mouseInput.enqueue("Left");
+				mouseInputLeft.enqueue("Left");
 			}
 			else if (Mouse::isButtonPressed(Mouse::Right)) {
-				mouseInput.enqueue("Right");
+				mouseInputRight.enqueue("Right");
 			}
 		}
 		if (events->type == Event::KeyPressed) {
 			if (Keyboard::isKeyPressed(Keyboard::W))
 			{
-				keyBoardInput.enqueue("W");
+				keyBoardInputW.enqueue("W");
 			}
 			if (Keyboard::isKeyPressed(Keyboard::A))
 			{
-				keyBoardInput.enqueue("A");
+				keyBoardInputA.enqueue("A");
 			}
 			if (Keyboard::isKeyPressed(Keyboard::S))
 			{
-				keyBoardInput.enqueue("S");
+				keyBoardInputS.enqueue("S");
 			}
 			if (Keyboard::isKeyPressed(Keyboard::D))
 			{
-				keyBoardInput.enqueue("D");
+				keyBoardInputD.enqueue("D");
 			}
 			if (Keyboard::isKeyPressed(Keyboard::Space))
 			{
-				keyBoardInput.enqueue("Space");
+				keyBoardInputSpace.enqueue("Space");
 			}
 			if (Keyboard::isKeyPressed(Keyboard::Enter))
 			{
-				keyBoardInput.enqueue("Enter");
+				keyBoardInputEnter.enqueue("Enter");
 			}
 		}
 	}
@@ -66,33 +66,69 @@ RenderWindow* Aiko::win() {
 	return window;
 }
 
-string Aiko::mouseButtonPressed() {
-	if (!mouseInput.isEmpty())
-	{
-		return mouseInput.dequeue();
-	}
-	return "NULL";
-	/*if (!mouseInput.isEmpty()) {
-		if (mouseInput.getTop() == temp) {
-			mouseInput.dequeue();
+bool Aiko::mouseButtonPressed(string temp) {
+	if (temp == "Left") {
+		if (mouseInputLeft.isEmpty())return false;
+		else {
+			mouseInputLeft.dequeue();
 			return true;
 		}
-		else return false;
 	}
-	else return false;*/
+	else if (temp == "Right") {
+		if (mouseInputRight.isEmpty())return false;
+		else {
+			mouseInputRight.dequeue();
+			return true;
+		}
+	}
+	else return false;
 }
-string Aiko::keyBoardButtonPressed() {
-	if (!keyBoardInput.isEmpty())
-	{
-		return keyBoardInput.dequeue();
+bool Aiko::keyBoardButtonPressed(string temp) {
+	if (temp == "W") {
+		if (keyBoardInputW.isEmpty())return false;
+		else {
+			keyBoardInputW.dequeue();
+			return true;
+		}
 	}
-	return "NULL";
-	//if (!keyBoardInput.isEmpty()) {
-	//	if (keyBoardInput.getTop() == temp) {
-	//		keyBoardInput.dequeue();
-	//		return true;
-	//	}
-	//	else return false;
-	//}
-	//else return false;
+	else if (temp == "A") {
+		if (keyBoardInputA.isEmpty())return false;
+		else {
+			keyBoardInputA.dequeue();
+			return true;
+		}
+	}
+	else if (temp == "S") {
+		if (keyBoardInputS.isEmpty())return false;
+		else {
+			keyBoardInputS.dequeue();
+			return true;
+		}
+	}
+	else if (temp == "D") {
+		if (keyBoardInputD.isEmpty())return false;
+		else {
+			keyBoardInputD.dequeue();
+			return true;
+		}
+	}
+	else if (temp == "Space") {
+		if (keyBoardInputSpace.isEmpty())return false;
+		else {
+			keyBoardInputSpace.dequeue();
+			return true;
+		}
+	}
+	else if (temp == "Enter") {
+		if (keyBoardInputEnter.isEmpty())return false;
+		else {
+			keyBoardInputEnter.dequeue();
+			return true;
+		}
+	}
+	else return false;
+}
+
+Vector2i Aiko::getMousePosition() {
+	return Mouse::getPosition(*window);
 }
