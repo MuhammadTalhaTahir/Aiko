@@ -25,12 +25,16 @@ public:
 
 class dummyObject :public object {
     Aiko* engine;
-    RectangleShape* body;
+    Texture* text;
+    Sprite* body;
     dummyObject2* bullet;
 public:
     dummyObject(Aiko* e) {
         engine = e;
-        body = new RectangleShape;
+        text = new Texture;
+        text->loadFromFile("char.png");
+        body = new Sprite;
+        body->setTexture(*text);
         bullet = NULL;
     };
     void update() { 
@@ -53,9 +57,9 @@ public:
         engine->win()->draw(*body);
     };
     void start() {
-        body->setFillColor(Color::Green);
+        //body->setFillColor(Color::Green);
         body->setPosition(100, 100);
-        body->setSize(Vector2f(34, 34));
+        //body->setScale(Vector2f(-1, -1));
     };
 };
 
