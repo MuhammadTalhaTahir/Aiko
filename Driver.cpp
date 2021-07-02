@@ -19,7 +19,7 @@ public:
     void start() {
         body->setFillColor(Color::Red);
         body->setPosition(x, y);
-        body->setSize(Vector2f(15, 15));
+        body->setSize(Vector2f(5, 5));
     };
 };
 
@@ -39,7 +39,7 @@ public:
     };
     void update() { 
         if (engine->mouseButtonPressed("Left")) {
-            bullet = new dummyObject2(engine,body->getPosition().x,body->getPosition().y);
+            bullet = new dummyObject2(engine,body->getPosition().x+40,body->getPosition().y+25);
             engine->insertObject(bullet);
         }
         if (engine->keyBoardButtonPressed("W")) {
@@ -59,7 +59,7 @@ public:
     void start() {
         //body->setFillColor(Color::Green);
         body->setPosition(100, 100);
-        //body->setScale(Vector2f(-1, -1));
+        body->setScale(Vector2f(2, 2));
     };
 };
 

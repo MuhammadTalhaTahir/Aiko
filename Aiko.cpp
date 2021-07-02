@@ -49,7 +49,7 @@ void Aiko::catchEvents() {
 void Aiko::Run() {
 	while (window->isOpen()) {
 		catchEvents();
-		window->clear(Color::Blue);
+		window->clear(Color::Black);
 		aikoObjects.updateObjects();
 		window->display();
 	}
