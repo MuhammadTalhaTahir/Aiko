@@ -36,12 +36,15 @@ public:
         body = new Sprite;
         body->setTexture(*text);
         bullet = NULL;
-    };
+    }
     void update() { 
         if (engine->mouseButtonPressed("Left")) {
             bullet = new dummyObject2(engine,body->getPosition().x+40,body->getPosition().y+25);
             engine->insertObject(bullet);
         }
+		float x = engine->getMousePosition().x;
+		float y = engine->getMousePosition().y;
+	//	body->setPosition(x,y);
         if (engine->keyBoardButtonPressed("W")) {
             body->move(0, -4);
         }
