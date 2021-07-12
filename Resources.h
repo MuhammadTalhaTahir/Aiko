@@ -2,6 +2,7 @@
 #ifndef  Resources_H
 #define	Resources_H
 #include <iostream>
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 using namespace sf;
 using namespace std;

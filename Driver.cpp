@@ -1,6 +1,5 @@
 #include "Aiko.h"
 
-
 class dummyObject2 :public object {
     Aiko* engine;
     RectangleShape* body;
@@ -28,6 +27,8 @@ class dummyObject :public object {
     Texture* text;
     Sprite* body;
     dummyObject2* bullet;
+    Music* music;
+    int m = 0;
 public:
     dummyObject(Aiko* e) {
         engine = e;
@@ -36,8 +37,11 @@ public:
         body = new Sprite;
         body->setTexture(*text);
         bullet = NULL;
+        music = new Music;
+        music->openFromFile("music.wav");
     }
     void update() { 
+        m++;
         if (engine->mouseButtonPressed("Left")) {
             bullet = new dummyObject2(engine,body->getPosition().x+40,body->getPosition().y+25);
             engine->insertObject(bullet);
