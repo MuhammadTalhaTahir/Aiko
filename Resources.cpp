@@ -51,10 +51,12 @@ int list::getObjectCount()const {
 	return objectCount;
 }
 
-void list::updateObjects() {
+void list::updateObjects(RenderWindow* win) {
 	listNode* temp = first;
 	while (temp != NULL) {
 		temp->data->update();
+		if (temp->data->body != NULL)
+			win->draw(*temp->data->body);
 		temp=temp->next;
 	}
 }

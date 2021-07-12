@@ -9,10 +9,14 @@ using namespace std;
 
 class object {
 public:
-	Texture* text;
+	Texture* texture;
 	RectangleShape* body;
 	virtual void update() = 0;
 	virtual void start() = 0;
+	object() {
+		texture = NULL;
+		body = NULL;
+	}
 };
 
 class listNode {
@@ -31,7 +35,7 @@ public:
 	void insert(object*);
 	void remove(object*);
 	int getObjectCount()const;
-	void updateObjects();
+	void updateObjects(RenderWindow*);
 };
 
 #endif 

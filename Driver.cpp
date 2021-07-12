@@ -12,7 +12,6 @@ public:
     }
     void update() {
         body->move(2, 0);
-        engine->win()->draw(*body);
     };
     void start() {
         body->setFillColor(Color::Red);
@@ -24,24 +23,26 @@ public:
 class dummyObject :public object {
     Aiko* engine;
     dummyObject2* bullet;
-    Music* music;
-    int m = 0;
+    Sound* music;
+    SoundBuffer* buffer;
 public:
     dummyObject(Aiko* e) {
         engine = e;
-        text = new Texture;
-        text->loadFromFile("char.png");
+        texture = new Texture;
+        texture->loadFromFile("char.png");
         bullet = NULL;
-        music = new Music;
-        music->openFromFile("music.wav");
+        buffer = new SoundBuffer;
+        buffer->loadFromFile("music.wav");
+        music = new Sound;
+        music->setBuffer(*buffer);
         body = new RectangleShape;
-        body->setTexture(text);
+        body->setTexture(texture);
     }
     void update() { 
-        m++;
         if (engine->mouseButtonPressed("Left")) {
             bullet = new dummyObject2(engine,body->getPosition().x+40,body->getPosition().y+25);
             engine->insertObject(bullet);
+            music->play();
         }
         float x = engine->getMousePosition().x;
         float y = engine->getMousePosition().y;
@@ -58,10 +59,9 @@ public:
 		if (engine->keyBoardButtonPressed("D")) {
             body->move(4, 0);
         }
-        engine->win()->draw(*body);
     };
     void start() {
-        body->setFillColor(Color::Green);
+        //body->setFillColor(Color::Green);
         body->setPosition(100, 100);
         body->setSize(Vector2f(70, 70));
     };
