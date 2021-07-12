@@ -69,7 +69,9 @@ public:
         body->setScale(Vector2f(2, 2));
     };
 };
-
+void fire() {
+	cout << "";
+}
 int main(){
     Aiko a;
     dummyObject b(&a);
