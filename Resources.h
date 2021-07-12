@@ -9,6 +9,8 @@ using namespace std;
 
 class object {
 public:
+	Texture* text;
+	RectangleShape* body;
 	virtual void update() = 0;
 	virtual void start() = 0;
 };

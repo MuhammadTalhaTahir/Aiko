@@ -2,7 +2,6 @@
 
 class dummyObject2 :public object {
     Aiko* engine;
-    RectangleShape* body;
     int x, y;
 public:
     dummyObject2(Aiko* e,int x,int y) {
@@ -24,9 +23,7 @@ public:
 
 class dummyObject :public object {
     Aiko* engine;
-    Texture* text;
     dummyObject2* bullet;
-    RectangleShape* body;
     Music* music;
     int m = 0;
 public:
