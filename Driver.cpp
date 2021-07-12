@@ -69,6 +69,9 @@ public:
         body->setScale(Vector2f(2, 2));
     };
 };
+void add() {
+
+}
 
 int main(){
     Aiko a;
