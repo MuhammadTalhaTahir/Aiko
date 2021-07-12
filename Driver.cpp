@@ -69,14 +69,16 @@ public:
         body->setScale(Vector2f(2, 2));
     };
 };
-void add() {
-
+void fire() {
+	cout << "";
 }
-
 int main(){
     Aiko a;
     dummyObject b(&a);
     a.insertObject(&b);
     a.Run();
     return 0;
+}
+void add() {
+
 }
