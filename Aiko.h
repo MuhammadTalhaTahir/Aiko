@@ -28,6 +28,7 @@ public:
 	bool mouseButtonPressed(string);
 	bool keyBoardButtonPressed(string);
 	Vector2i getMousePosition();
+	bool isCursorOverObject(RectangleShape*);
 private:
 	void catchEvents();
 };

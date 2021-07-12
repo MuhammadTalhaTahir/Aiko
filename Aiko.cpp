@@ -132,3 +132,14 @@ bool Aiko::keyBoardButtonPressed(string temp) {
 Vector2i Aiko::getMousePosition() {
 	return Mouse::getPosition(*window);
 }
+bool Aiko::isCursorOverObject(RectangleShape* obj) {
+	int x = obj->getPosition().x;
+	int y = obj->getPosition().y;
+	int mx = getMousePosition().x;
+	int my = getMousePosition().y;
+	if (mx >= x && my >= y) {
+		if (mx <= x + obj->getSize().x && my <= y + obj->getSize().y)return true;
+		else return false;
+	}
+	else return false;
+}
