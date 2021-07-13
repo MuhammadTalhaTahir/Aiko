@@ -68,8 +68,8 @@ public:
 };
 int main(){
     Aiko a;
-    //dummyObject b(&a);
-    //a.insertObject(&b);
+    dummyObject b(&a);
+    a.insertObject(&b);
     a.Run();
     return 0;
 }

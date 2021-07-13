@@ -13,7 +13,8 @@ private:
 	Event* events;
 	const int windowX;
 	const int windowY;
-	RectangleShape* background;
+	RectangleShape* intro;
+	Texture* introTexture;
 	queue<string> mouseInputLeft;
 	queue<string> mouseInputRight;
 	queue<string> keyBoardInputW;
@@ -35,6 +36,5 @@ public:
 private:
 	void catchEvents();
 	void loadIntro();
-	void runIntro();
 };
 #endif 

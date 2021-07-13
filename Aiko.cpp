@@ -1,7 +1,8 @@
 #include "Aiko.h"
 
 Aiko::Aiko():windowX(1024),windowY(576) {
-	background = new RectangleShape[3];
+	intro = new RectangleShape[3];
+	introTexture = new Texture[3];
 	window = new RenderWindow(VideoMode(windowX, windowY), "Aiko Test Window");
 	events = new Event;
 	loadIntro();
@@ -49,31 +50,32 @@ void Aiko::catchEvents() {
 	}
 }
 void Aiko::loadIntro() {
-	Texture arry[3];
 	string file = "intro\\intro1.png";
 	char num = 48;
 	for (int i = 0; i < 3; i++) {
 		num += 1;
 		file[11] = num;
-		arry[i].loadFromFile(file);
-		background[i].setTexture(&arry[i]);
-		background[i].setPosition(0, 0);
-		//background[i].setScale(100, 100);
-		background[i].setSize(Vector2f(20, 20));
+		introTexture[i].loadFromFile(file);
+		intro[i].setTexture(&introTexture[i]);
+		intro[i].setPosition(0, 0);
+		intro[i].setSize(Vector2f(windowX, windowY));
 	}
-	/*background[2].setSize(Vector2f(windowX-10, windowY-10));
-	background[2].setPosition(0, 0);
-	background[2].setFillColor(Color::Blue);*/
-}
-void Aiko::runIntro() {
-
 }
 void Aiko::Run() {
+	bool rintro = true;
+	int i = 0;
 	while (window->isOpen()) {
 		catchEvents();
-		window->clear(Color::Green);
-		window->draw(background[0]);
-		aikoObjects.updateObjects(window);
+		window->clear(Color::Black);
+		if (rintro) {
+			window->draw(intro[i%3]);
+			if (i == 12)rintro = false;
+			i++;
+			Sleep(300);
+		}
+		else {
+			aikoObjects.updateObjects(window);
+		}
 		window->display();
 	}
 }
