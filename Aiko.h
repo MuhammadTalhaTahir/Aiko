@@ -11,6 +11,9 @@ private:
 	list aikoObjects;
 	RenderWindow* window;
 	Event* events;
+	const int windowX;
+	const int windowY;
+	RectangleShape* background;
 	queue<string> mouseInputLeft;
 	queue<string> mouseInputRight;
 	queue<string> keyBoardInputW;
@@ -31,5 +34,7 @@ public:
 	bool isCursorOverObject(RectangleShape*);
 private:
 	void catchEvents();
+	void loadIntro();
+	void runIntro();
 };
 #endif 

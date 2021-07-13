@@ -1,8 +1,10 @@
 #include "Aiko.h"
 
-Aiko::Aiko() {
-	window = new RenderWindow(VideoMode(1024, 576), "Aiko Test Window");
+Aiko::Aiko():windowX(1024),windowY(576) {
+	background = new RectangleShape[3];
+	window = new RenderWindow(VideoMode(windowX, windowY), "Aiko Test Window");
 	events = new Event;
+	loadIntro();
 }
 
 void Aiko::catchEvents() {
@@ -46,10 +48,31 @@ void Aiko::catchEvents() {
 		}
 	}
 }
+void Aiko::loadIntro() {
+	Texture arry[3];
+	string file = "intro\\intro1.png";
+	char num = 48;
+	for (int i = 0; i < 3; i++) {
+		num += 1;
+		file[11] = num;
+		arry[i].loadFromFile(file);
+		background[i].setTexture(&arry[i]);
+		background[i].setPosition(0, 0);
+		//background[i].setScale(100, 100);
+		background[i].setSize(Vector2f(20, 20));
+	}
+	/*background[2].setSize(Vector2f(windowX-10, windowY-10));
+	background[2].setPosition(0, 0);
+	background[2].setFillColor(Color::Blue);*/
+}
+void Aiko::runIntro() {
+
+}
 void Aiko::Run() {
 	while (window->isOpen()) {
 		catchEvents();
-		window->clear(Color::Black);
+		window->clear(Color::Green);
+		window->draw(background[0]);
 		aikoObjects.updateObjects(window);
 		window->display();
 	}
