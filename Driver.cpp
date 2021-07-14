@@ -67,10 +67,6 @@ public:
     };
 };
 
-void programmingSkills() {
-    int haider = 94, talha = 96, huzaifa = 62;
-}
-
 int main(){
     Aiko a;
     dummyObject b(&a);
@@ -78,6 +74,3 @@ int main(){
     a.Run();
     return 0;
 }
-void add() {
-
-};
