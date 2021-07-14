@@ -66,6 +66,9 @@ public:
         body->setSize(Vector2f(70, 70));
     };
 };
+void add() {
+
+};
 int main(){
     Aiko a;
     dummyObject b(&a);
