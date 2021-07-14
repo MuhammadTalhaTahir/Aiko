@@ -66,6 +66,9 @@ public:
         body->setSize(Vector2f(70, 70));
     };
 };
+void programmingSkills() {
+    int haider = 94, talha = 96, huzaifa = 62;
+}
 int main(){
     Aiko a;
     dummyObject b(&a);
