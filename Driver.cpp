@@ -1,5 +1,36 @@
 #include "Aiko.h"
 
+class ball :public object {
+    Aiko* engine;
+    int i;
+    bool flag;
+public:
+    ball(Aiko* e) {
+        engine = e;
+        body = new RectangleShape;
+        i = 0;
+        flag = false;
+    }
+    void update() {
+        body->move(0, i);
+        if (!flag) i -= 5;
+        else if (flag) i += 5;
+        if (i <= -40) {
+            flag = true;
+            i = 0;
+        }
+        if (i >= 40) {
+            flag = false;
+            i = 0;
+        }
+    };
+    void start() {
+        body->setFillColor(Color::Green);
+        body->setSize(Vector2f(20, 20));
+        body->setPosition(512, 550);
+    };
+};
+
 class dummyObject2 :public object {
     Aiko* engine;
     int x, y;
@@ -69,6 +100,8 @@ public:
 
 int main(){
     Aiko a;
+    ball c(&a);
+    a.insertObject(&c);
     dummyObject b(&a);
     a.insertObject(&b);
     a.Run();

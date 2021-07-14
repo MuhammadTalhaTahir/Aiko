@@ -62,14 +62,14 @@ void Aiko::loadIntro() {
 	}
 }
 void Aiko::Run() {
-	bool rintro = true;
+	bool runIntro = true;
 	int i = 0;
 	while (window->isOpen()) {
 		catchEvents();
 		window->clear(Color::Black);
-		if (rintro) {
+		if (runIntro) {
 			window->draw(intro[i%3]);
-			if (i == 12)rintro = false;
+			if (i == 12)runIntro = false;
 			i++;
 			Sleep(300);
 		}
