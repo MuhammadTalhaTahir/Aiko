@@ -5,6 +5,8 @@ Aiko::Aiko():windowX(1024),windowY(576) {
 	introTexture = new Texture[3];
 	window = new RenderWindow(VideoMode(windowX, windowY), "Aiko Test Window");
 	events = new Event;
+	buffer = new SoundBuffer;
+	sound = new Sound;
 	loadIntro();
 }
 
@@ -50,6 +52,8 @@ void Aiko::catchEvents() {
 	}
 }
 void Aiko::loadIntro() {
+	buffer->loadFromFile("intro\\intro.wav");
+	sound->setBuffer(*buffer);
 	string file = "intro\\intro1.png";
 	char num = 48;
 	for (int i = 0; i < 3; i++) {
@@ -64,6 +68,7 @@ void Aiko::loadIntro() {
 void Aiko::Run() {
 	bool runIntro = true;
 	int i = 0;
+	sound->play();
 	while (window->isOpen()) {
 		catchEvents();
 		window->clear(Color::Black);
@@ -71,7 +76,7 @@ void Aiko::Run() {
 			window->draw(intro[i%3]);
 			if (i == 12)runIntro = false;
 			i++;
-			Sleep(300);
+			Sleep(270);
 		}
 		else {
 			aikoObjects.updateObjects(window);

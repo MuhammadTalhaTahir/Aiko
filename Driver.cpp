@@ -4,6 +4,7 @@ class ball :public object {
     Aiko* engine;
     int i;
     bool flag;
+    int y = 0;
 public:
     ball(Aiko* e) {
         engine = e;
@@ -12,17 +13,21 @@ public:
         flag = false;
     }
     void update() {
-        body->move(0, i);
-        if (!flag) i -= 5;
-        else if (flag) i += 5;
-        if (i <= -40) {
-            flag = true;
-            i = 0;
+        if (y == 50) {
+            y = 0;
+            body->move(0, i);
+            if (!flag) i -= 5;
+            else if (flag) i += 5;
+            if (i <= -40) {
+                flag = true;
+                i = 0;
+            }
+            if (i >= 40) {
+                flag = false;
+                i = 0;
+            }
         }
-        if (i >= 40) {
-            flag = false;
-            i = 0;
-        }
+        y++;
     };
     void start() {
         body->setFillColor(Color::Green);

@@ -13,8 +13,12 @@ private:
 	Event* events;
 	const int windowX;
 	const int windowY;
+	/*Only for Intro*/
 	RectangleShape* intro;
 	Texture* introTexture;
+	SoundBuffer* buffer;
+	Sound* sound;
+	/*Only for Intro*/
 	queue<string> mouseInputLeft;
 	queue<string> mouseInputRight;
 	queue<string> keyBoardInputW;
