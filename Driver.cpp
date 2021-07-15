@@ -65,7 +65,7 @@ public:
     dummyObject(Aiko* e) {
         engine = e;
         texture = new Texture;
-        texture->loadFromFile("char.png");
+        texture->loadFromFile("char1.png");
         bullet = NULL;
         buffer = new SoundBuffer;
         buffer->loadFromFile("music.wav");
@@ -76,7 +76,7 @@ public:
     }
     void update() { 
         if (engine->mouseButtonPressed("Left")) {
-            bullet = new dummyObject2(engine,body->getPosition().x+40,body->getPosition().y+25);
+            bullet = new dummyObject2(engine,body->getPosition().x+80,body->getPosition().y+70);
             engine->insertObject(bullet);
             music->play();
         }
@@ -99,7 +99,7 @@ public:
     void start() {
         //body->setFillColor(Color::Green);
         body->setPosition(100, 100);
-        body->setSize(Vector2f(70, 70));
+        body->setSize(Vector2f(100, 100));
     };
 };
 
