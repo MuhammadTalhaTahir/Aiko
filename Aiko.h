@@ -11,8 +11,6 @@ private:
 	list aikoObjects;
 	RenderWindow* window;
 	Event* events;
-	const int windowX;
-	const int windowY;
 	/*Only for Intro*/
 	RectangleShape* intro;
 	Texture* introTexture;
@@ -28,6 +26,8 @@ private:
 	queue<string> keyBoardInputSpace;
 	queue<string> keyBoardInputEnter;
 public:
+	const int windowX;
+	const int windowY;
 	Aiko();
 	void Run();
 	void insertObject(object*);
@@ -37,8 +37,10 @@ public:
 	bool keyBoardButtonPressed(string);
 	Vector2i getMousePosition();
 	bool isCursorOverObject(RectangleShape*);
+	bool collision(RectangleShape* a, RectangleShape* b);
 private:
 	void catchEvents();
 	void loadIntro();
+	bool pointInBody(RectangleShape* bdy, int a, int b);
 };
 #endif 

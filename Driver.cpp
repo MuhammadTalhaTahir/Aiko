@@ -1,6 +1,6 @@
-#include "Aiko.h"
+#include "pong.cpp"
 
-class ball :public object {
+/*class ball :public object {
     Aiko* engine;
     int i;
     bool flag;
@@ -102,13 +102,11 @@ public:
         body->setSize(Vector2f(100, 100));
     };
 };
-
+*/
 int main(){
-    Aiko a;
-    ball c(&a);
-    a.insertObject(&c);
-    dummyObject b(&a);
-    a.insertObject(&b);
-    a.Run();
+    Aiko e;
+    paddle p(&e);
+    e.insertObject(&p);
+    e.Run();
     return 0;
 }

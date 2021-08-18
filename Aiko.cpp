@@ -66,9 +66,9 @@ void Aiko::loadIntro() {
 	}
 }
 void Aiko::Run() {
-	bool runIntro = true;
+	bool runIntro = false;
 	int i = 0;
-	sound->play();
+	if(runIntro)sound->play();
 	while (window->isOpen()) {
 		catchEvents();
 		window->clear(Color::Black);
@@ -172,4 +172,26 @@ bool Aiko::isCursorOverObject(RectangleShape* obj) {
 		else return false;
 	}
 	else return false;
+}
+
+bool Aiko::pointInBody(RectangleShape* bdy, int a, int b) {
+	int x = bdy->getPosition().x;
+	int y = bdy->getPosition().y;
+	if (a >= x && b >= y) {
+		if (a <= x + bdy->getSize().x && b <= y + bdy->getSize().y)return true;
+		else return false;
+	}
+	else return false;
+}
+
+bool Aiko::collision(RectangleShape* a, RectangleShape* b) {
+	int x = b->getPosition().x;
+	int y = b->getPosition().y;
+	for (int i = x; i <= x + b->getSize().x; i++) {
+		for (int j = y; j <= y + b->getSize().y; j++) {
+			if (pointInBody(a, i, j))
+				return true;
+		}
+	}
+	return false;
 }

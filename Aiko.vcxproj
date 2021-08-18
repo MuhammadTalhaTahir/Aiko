@@ -154,6 +154,7 @@
     <ClCompile Include="Aiko.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="pong.cpp" />
     <ClCompile Include="queue.cpp" />
     <ClCompile Include="Resources.cpp" />
   </ItemGroup>
