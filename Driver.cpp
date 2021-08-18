@@ -105,8 +105,9 @@ public:
 */
 int main(){
     Aiko e;
-    paddle p(&e);
-    e.insertObject(&p);
+    cout << "k" << endl;
+    game Game(&e);
+    e.insertObject(&Game);
     e.Run();
     return 0;
 }
