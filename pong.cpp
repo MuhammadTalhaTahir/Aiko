@@ -4,29 +4,33 @@ class ball :public object {
 private:
 	Aiko* engine;
 public:
-	float velocity;
+	float velocityX;
+	float velocityY;
 	ball(Aiko* e) {
 		this->engine = e;
-		velocity = 1.0;
+		velocityX = 1.0;
+		velocityY = 0.0;
 		body = new RectangleShape;
 	};
 	void start() {
 		body->setSize(Vector2f(20, 20));
 		body->setFillColor(Color::White);
-		body->setPosition(Vector2f(engine->windowX / 2, engine->windowY / 2));
+		body->setPosition(Vector2f(600, 400));
 	};
 	void update() {
-		body->move(velocity, 0);
+		body->move(-velocityX, velocityY);
 	};
 };
 
 class paddle :public object {
 private:
 	Aiko* engine;
+	int y;
 public:
 	paddle(Aiko* e) {
 		engine = e;
 		body = new RectangleShape;
+		y = 100;
 	};
 	void start() {
 		body->setSize(Vector2f(10, 60));
@@ -34,11 +38,9 @@ public:
 		body->setFillColor(Color::White);
 	};
 	void update() {
-		if (engine->keyBoardButtonPressed("W")) {
-			if (body->getPosition().y > 0)body->move(0, -10);
-		}
-		else if (engine->keyBoardButtonPressed("S")) {
-			if (body->getPosition().y < 550)body->move(0, 10);
+		y = engine->getMousePosition().y;
+		if (y > 0 && y < 550) {
+			body->setPosition(Vector2f(20, y));
 		}
 	};
 };
@@ -91,9 +93,21 @@ public:
 		engine->insertObject(wall3);
 	}
 	void update() {
-		if (engine->collision(Paddle->body, Ball->body)) Ball->velocity *= -1;
-		if (engine->collision(wall1->body, Ball->body)) Ball->velocity *= -1;
-		if (engine->collision(wall2->body, Ball->body)) Ball->velocity *= -1;
-		if (engine->collision(wall3->body, Ball->body)) Ball->velocity *= -1;
+		if (engine->collision(Paddle->body, Ball->body)) {
+			int paddleY = Paddle->body->getSize().y;
+			paddleY /= 4;
+			paddleY += Paddle->body->getPosition().y;
+			if (Ball->body->getPosition().y <= paddleY) {
+				Ball->velocityX *= -1;
+				Ball->velocityY = -1;
+			}
+			else {
+				Ball->velocityX *= -1;
+				Ball->velocityY = 0;
+			}
+		}
+		if (engine->collision(wall1->body, Ball->body)) Ball->velocityX *= -1;
+		if (engine->collision(wall2->body, Ball->body)) Ball->velocityX *= -1;
+		if (engine->collision(wall3->body, Ball->body)) Ball->velocityX *= -1;
 	}
 };

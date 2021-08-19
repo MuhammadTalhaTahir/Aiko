@@ -105,7 +105,7 @@ public:
 */
 int main(){
     Aiko e;
-    cout << "k" << endl;
+    //cout << "k" << endl;
     game Game(&e);
     e.insertObject(&Game);
     e.Run();
