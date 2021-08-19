@@ -8,17 +8,17 @@ public:
 	float velocityY;
 	ball(Aiko* e) {
 		this->engine = e;
-		velocityX = 1.0;
-		velocityY = 0.0;
+		velocityX = -1.0;
+		velocityY = 1.0;
 		body = new RectangleShape;
 	};
 	void start() {
 		body->setSize(Vector2f(20, 20));
 		body->setFillColor(Color::White);
-		body->setPosition(Vector2f(600, 400));
+		body->setPosition(Vector2f(400, 200));
 	};
 	void update() {
-		body->move(-velocityX, velocityY);
+		body->move(velocityX, velocityY);
 	};
 };
 
@@ -33,7 +33,7 @@ public:
 		y = 100;
 	};
 	void start() {
-		body->setSize(Vector2f(10, 60));
+		body->setSize(Vector2f(10, 100));
 		body->setPosition(Vector2f(20, 100));
 		body->setFillColor(Color::White);
 	};
@@ -95,19 +95,30 @@ public:
 	void update() {
 		if (engine->collision(Paddle->body, Ball->body)) {
 			int paddleY = Paddle->body->getSize().y;
-			paddleY /= 4;
-			paddleY += Paddle->body->getPosition().y;
-			if (Ball->body->getPosition().y <= paddleY) {
-				Ball->velocityX *= -1;
+			paddleY /= 3;
+			int oneBy = paddleY + Paddle->body->getPosition().y; 
+			int threeBy = oneBy + paddleY;
+			if (Ball->body->getPosition().y <= oneBy) {
+				Ball->velocityX = 1;
 				Ball->velocityY = -1;
 			}
-			else {
-				Ball->velocityX *= -1;
+			else if (Ball->body->getPosition().y > oneBy && Ball->body->getPosition().y < threeBy) {
+				Ball->velocityX = 1;
 				Ball->velocityY = 0;
 			}
+			else if (Ball->body->getPosition().y >= threeBy) {
+				Ball->velocityX = 1;
+				Ball->velocityY = +1;
+			}
 		}
-		if (engine->collision(wall1->body, Ball->body)) Ball->velocityX *= -1;
-		if (engine->collision(wall2->body, Ball->body)) Ball->velocityX *= -1;
-		if (engine->collision(wall3->body, Ball->body)) Ball->velocityX *= -1;
+		if (engine->collision(wall1->body, Ball->body)) {
+			Ball->velocityY = +1;
+		}
+		if (engine->collision(wall2->body, Ball->body)) {
+			Ball->velocityY = -1;
+		}
+		if (engine->collision(wall3->body, Ball->body)) {
+			Ball->velocityX = -1;
+		}
 	}
 };
