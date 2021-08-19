@@ -111,13 +111,13 @@ public:
 				Ball->velocityY = +1;
 			}
 		}
-		if (engine->collision(wall1->body, Ball->body)) {
+		else if (engine->collision(wall1->body, Ball->body)) {
 			Ball->velocityY = +1;
 		}
-		if (engine->collision(wall2->body, Ball->body)) {
+		else if (engine->collision(wall2->body, Ball->body)) {
 			Ball->velocityY = -1;
 		}
-		if (engine->collision(wall3->body, Ball->body)) {
+		else if (engine->collision(wall3->body, Ball->body)) {
 			Ball->velocityX = -1;
 		}
 	}
