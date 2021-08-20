@@ -8,7 +8,6 @@ Aiko::Aiko():windowX(1024),windowY(576) {
 	events = new Event;
 	buffer = new SoundBuffer;
 	sound = new Sound;
-	deltaTime = 0;
 	loadIntro();
 }
 
@@ -71,7 +70,7 @@ void Aiko::Run() {
 	bool runIntro = false;
 	int i = 0;
 	if(runIntro)sound->play();
-	chrono::system_clock::time_point previousTime = chrono::high_resolution_clock::now();
+	Clock deltaClock;
 	while (window->isOpen()) {
 		catchEvents();
 		window->clear(Color::Black);
@@ -85,8 +84,7 @@ void Aiko::Run() {
 			aikoObjects.updateObjects(window);
 		}
 		window->display();
-		deltaTime = (chrono::duration_cast<chrono::microseconds>(chrono::high_resolution_clock::now() - previousTime)).count();
-		previousTime = chrono::high_resolution_clock::now();
+		deltaTime = deltaClock.restart();
 	}
 }
 void Aiko::insertObject(object* temp) {
