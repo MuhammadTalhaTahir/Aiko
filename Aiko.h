@@ -28,6 +28,7 @@ private:
 public:
 	const int windowX;
 	const int windowY;
+	float deltaTime;
 	Aiko();
 	void Run();
 	void insertObject(object*);

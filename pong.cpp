@@ -120,5 +120,6 @@ public:
 		else if (engine->collision(wall3->body, Ball->body)) {
 			Ball->velocityX = -1;
 		}
+		cout << engine->deltaTime << endl;
 	}
 };
