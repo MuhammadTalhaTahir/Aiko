@@ -8,8 +8,8 @@ public:
 	float velocityY;
 	ball(Aiko* e) {
 		this->engine = e;
-		velocityX = -1.0;
-		velocityY = 1.0;
+		velocityX = -200.0;
+		velocityY = 200.0;
 		body = new RectangleShape;
 	};
 	void start() {
@@ -18,7 +18,7 @@ public:
 		body->setPosition(Vector2f(400, 200));
 	};
 	void update() {
-		body->move(velocityX, velocityY);
+		body->move(velocityX * engine->deltaTime.asSeconds(), velocityY * engine->deltaTime.asSeconds());
 	};
 };
 
@@ -99,27 +99,26 @@ public:
 			int oneBy = paddleY + Paddle->body->getPosition().y; 
 			int threeBy = oneBy + paddleY;
 			if (Ball->body->getPosition().y <= oneBy) {
-				Ball->velocityX = 1;
-				Ball->velocityY = -1;
+				Ball->velocityX = 200;
+				Ball->velocityY = -200;
 			}
 			else if (Ball->body->getPosition().y > oneBy && Ball->body->getPosition().y < threeBy) {
-				Ball->velocityX = 1;
+				Ball->velocityX = 200;
 				Ball->velocityY = 0;
 			}
 			else if (Ball->body->getPosition().y >= threeBy) {
-				Ball->velocityX = 1;
-				Ball->velocityY = +1;
+				Ball->velocityX = 200;
+				Ball->velocityY = +200;
 			}
 		}
 		else if (engine->collision(wall1->body, Ball->body)) {
-			Ball->velocityY = +1;
+			Ball->velocityY = +200;
 		}
 		else if (engine->collision(wall2->body, Ball->body)) {
-			Ball->velocityY = -1;
+			Ball->velocityY = -200;
 		}
 		else if (engine->collision(wall3->body, Ball->body)) {
-			Ball->velocityX = -1;
+			Ball->velocityX = -200;
 		}
-		cout << engine->deltaTime.asSeconds() << endl;
 	}
 };
