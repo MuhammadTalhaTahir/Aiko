@@ -44,6 +44,28 @@ public:
 		}
 	};
 };
+class paddle2 :public object {
+private:
+	Aiko* engine;
+public:
+	paddle2(Aiko* e) {
+		engine = e;
+		body = new RectangleShape;
+	};
+	void start() {
+		body->setSize(Vector2f(10, 100));
+		body->setPosition(Vector2f(engine->windowX - 30, 100));
+		body->setFillColor(Color::White);
+	};
+	void update() {
+		if (engine->keyBoardButtonPressed("W")) {
+			body->move(0, -20);
+		}
+		if (engine->keyBoardButtonPressed("S")) {
+			body->move(0, 20);
+		}
+	};
+};
 
 class wall :public object {
 	Aiko* engine;
@@ -72,25 +94,27 @@ class game :public object {
 private:
 	Aiko* engine;
 	paddle* Paddle;
+	paddle2* Paddle2;
 	ball* Ball;
 	wall* wall1;
 	wall* wall2;
-	wall* wall3;
+	float ballSpeed;
 public:
 	game(Aiko* e) {
 		engine = e;
 		Paddle = new paddle(engine);
+		Paddle2 = new paddle2(engine);
 		Ball = new ball(engine);
 		wall1 = new wall(engine,engine->windowX, 20, 0, 0);
 		wall2 = new wall(engine, engine->windowX, 20, 0, engine->windowY - 20);
-		wall3 = new wall(engine, 20, engine->windowY, engine->windowX - 20, 0);
+		ballSpeed = 300;
 	}
 	void start() {
 		engine->insertObject(Ball);
 		engine->insertObject(Paddle);
+		engine->insertObject(Paddle2);
 		engine->insertObject(wall1);
 		engine->insertObject(wall2);
-		engine->insertObject(wall3);
 	}
 	void update() {
 		if (engine->collision(Paddle->body, Ball->body)) {
@@ -99,16 +123,16 @@ public:
 			int oneBy = paddleY + Paddle->body->getPosition().y; 
 			int threeBy = oneBy + paddleY;
 			if (Ball->body->getPosition().y <= oneBy) {
-				Ball->velocityX = 200;
-				Ball->velocityY = -200;
+				Ball->velocityX = ballSpeed;
+				Ball->velocityY = -ballSpeed;
 			}
 			else if (Ball->body->getPosition().y > oneBy && Ball->body->getPosition().y < threeBy) {
-				Ball->velocityX = 200;
+				Ball->velocityX = ballSpeed;
 				Ball->velocityY = 0;
 			}
 			else if (Ball->body->getPosition().y >= threeBy) {
-				Ball->velocityX = 200;
-				Ball->velocityY = +200;
+				Ball->velocityX = ballSpeed;
+				Ball->velocityY = +ballSpeed;
 			}
 		}
 		else if (engine->collision(wall1->body, Ball->body)) {
@@ -117,8 +141,23 @@ public:
 		else if (engine->collision(wall2->body, Ball->body)) {
 			Ball->velocityY = -200;
 		}
-		else if (engine->collision(wall3->body, Ball->body)) {
-			Ball->velocityX = -200;
+		else if (engine->collision(Paddle2->body, Ball->body)) {
+			int paddleY = Paddle2->body->getSize().y;
+			paddleY /= 3;
+			int oneBy = paddleY + Paddle2->body->getPosition().y;
+			int threeBy = oneBy + paddleY;
+			if (Ball->body->getPosition().y <= oneBy) {
+				Ball->velocityX = -ballSpeed;
+				Ball->velocityY = -ballSpeed;
+			}
+			else if (Ball->body->getPosition().y > oneBy && Ball->body->getPosition().y < threeBy) {
+				Ball->velocityX = -ballSpeed;
+				Ball->velocityY = 0;
+			}
+			else if (Ball->body->getPosition().y >= threeBy) {
+				Ball->velocityX = -ballSpeed;
+				Ball->velocityY = +ballSpeed;
+			}
 		}
 	}
 };
